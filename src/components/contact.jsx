@@ -80,7 +80,7 @@ export const Contact = (props) => {
                         id="email"
                         name="email"
                         className="form-control"
-                        placeholder="이름"
+                        placeholder="담당자"
                         required
                         onChange={handleChange}
                       />
@@ -104,7 +104,7 @@ export const Contact = (props) => {
                   <div className="col-md-6">
                     <div className="form-group">
                       <div className="radio">
-                        <label>
+                        <label style={{ marginRight: "10px" }}>
                           <input
                             type="radio"
                             name="contactMethod"
@@ -115,7 +115,6 @@ export const Contact = (props) => {
                           이메일
                         </label>
                       </div>
-
                       <div className="radio">
                         <label>
                           <input
@@ -137,7 +136,7 @@ export const Contact = (props) => {
                     id="message"
                     className="form-control"
                     rows="4"
-                    placeholder="Message"
+                    placeholder="내용"
                     required
                     onChange={handleChange}
                   ></textarea>
@@ -145,7 +144,7 @@ export const Contact = (props) => {
                 </div>
                 <div id="success"></div>
                 <button type="submit" className="btn btn-custom btn-lg">
-                  Send Message
+                  문의 요청
                 </button>
               </form>
             </div>
@@ -177,7 +176,7 @@ export const Contact = (props) => {
               </p>
             </div>
           </div>
-          <div className="col-md-12">
+          {/*           <div className="col-md-12">
             <div className="row">
               <div className="social">
                 <ul>
@@ -199,7 +198,7 @@ export const Contact = (props) => {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div id="footer">
