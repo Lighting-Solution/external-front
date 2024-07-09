@@ -1,7 +1,7 @@
 {
   "Header": {
     "title": "LIGHTING SOLUTION",
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+    "paragraph": "Lighting Solution은 혁신적인 그룹웨어 솔루션을 통해 효율적인 협업과 생산성을 극대화하는 전문 기업입니다."
   },
   "About": {
     "paragraph": "우리 회사의 목표는 인트라넷 솔루션을 통해 고객이 내부 커뮤니케이션과 협업을 효율적으로 관리할 수 있도록 돕는 것입니다. 우리는 포괄적인 이해와 실질적인 구현을 보장하여, 고객이 필요로 하는 모든 기능을 인트라넷 솔루션에 반영하고 있습니다. 우리는 각 고객의 비즈니스 환경과 요구 사항을 철저히 분석하고, 이를 바탕으로 최적의 맞춤형 솔루션을 제공합니다. 이러한 접근 방식은 고객이 직면한 문제를 신속하게 파악하고, 그에 따른 효과적인 해결책을 제시할 수 있게 합니다. 항상 최고의 서비스를 제공하기 위해 노력하고 있습니다.",
@@ -15,47 +15,47 @@
   },
   "Gallery": [
     {
-      "title": "Project Title",
+      "title": "갤",
       "largeImage": "img/portfolio/01-large.jpg",
       "smallImage": "img/portfolio/01-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "러",
       "largeImage": "img/portfolio/02-large.jpg",
       "smallImage": "img/portfolio/02-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "리",
       "largeImage": "img/portfolio/03-large.jpg",
       "smallImage": "img/portfolio/03-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "에",
       "largeImage": "img/portfolio/04-large.jpg",
       "smallImage": "img/portfolio/04-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "뭘",
       "largeImage": "img/portfolio/05-large.jpg",
       "smallImage": "img/portfolio/05-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "넣",
       "largeImage": "img/portfolio/06-large.jpg",
       "smallImage": "img/portfolio/06-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "을",
       "largeImage": "img/portfolio/07-large.jpg",
       "smallImage": "img/portfolio/07-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "까",
       "largeImage": "img/portfolio/08-large.jpg",
       "smallImage": "img/portfolio/08-small.jpg"
     },
     {
-      "title": "Project Title",
+      "title": "요..?",
       "largeImage": "img/portfolio/09-large.jpg",
       "smallImage": "img/portfolio/09-small.jpg"
     }
@@ -64,32 +64,32 @@
     {
       "icon": "fa fa-comments",
       "name": "메신저",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "메신 메신저"
     },
     {
       "icon": "fa fa-clipboard",
       "name": "전자결재",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "전자 전자결"
     },
     {
       "icon": "fa fa-book",
       "name": "주소록",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "주소 주소록"
     },
     {
       "icon": "fa fa-calendar",
       "name": "캘린더",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "캘린 캘린더"
     },
     {
       "icon": "fa fa-folder-open",
       "name": "문서함",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "문서 문서함"
     },
     {
       "icon": "fa fa-bullhorn",
       "name": "게시판",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "게시 게시판"
     }
   ],
 
@@ -148,9 +148,9 @@
     }
   ],
   "Contact": {
-    "address": "4321 California St, San Francisco, CA 12345 ",
-    "phone": "+1 123 456 1234",
-    "email": "info@company.com",
+    "address": "서울특별시 강서구 화곡로 179 대한상공회의소 서울기술교육센터",
+    "phone": "11-1111-1111",
+    "email": "kccistc@company.com",
     "facebook": "fb.com",
     "twitter": "twitter.com",
     "youtube": "youtube.com"
