@@ -1,52 +1,38 @@
-import { useState } from "react";
-import emailjs from "emailjs-com";
-import React from "react";
+import React, { useState } from "react";
+import "../css/Text-button-css.css";
 
 const initialState = {
+  companyName: "",
   name: "",
   email: "",
+  tel: "",
   message: "",
-  contactMethod: "email", // 기본값으로 이메일을 선택
 };
 
 export const Contact = (props) => {
-  const [{ name, email, message, contactMethod }, setState] =
+  const [{ companyName, name, email, tel, message }, setState] =
     useState(initialState);
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
     if (type === "radio") {
-      setState((prevState) => ({ ...prevState, contactMethod: value }));
+      setState((prevState) => ({ ...prevState }));
     } else {
       setState((prevState) => ({ ...prevState, [name]: value }));
     }
   };
 
-  const clearState = () => setState({ ...initialState });
+  const clearState = () => {
+    setState({ ...initialState });
+  };
+
+  const handleAdmin = () => {};
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, message, contactMethod);
 
-    // EmailJS 사용 부분
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        e.target,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          clearState();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    clearState();
   };
-
   return (
     <div>
       <div id="contact">
@@ -63,24 +49,11 @@ export const Contact = (props) => {
                     <div className="form-group">
                       <input
                         type="text"
-                        id="name"
-                        name="name"
+                        id="companyName"
+                        name="companyName"
                         className="form-control"
                         placeholder="회사명"
-                        required
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="form-control"
-                        placeholder="담당자"
+                        value={companyName}
                         required
                         onChange={handleChange}
                       />
@@ -91,10 +64,11 @@ export const Contact = (props) => {
                     <div className="form-group">
                       <input
                         type="text"
-                        id="ph"
-                        name="ph"
+                        id="name"
+                        name="name"
                         className="form-control"
-                        placeholder="연락처"
+                        placeholder="이름"
+                        value={name}
                         required
                         onChange={handleChange}
                       />
@@ -103,30 +77,32 @@ export const Contact = (props) => {
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
-                      <div className="radio">
-                        <label style={{ marginRight: "10px" }}>
-                          <input
-                            type="radio"
-                            name="contactMethod"
-                            value="email"
-                            checked={contactMethod === "email"}
-                            onChange={handleChange}
-                          />
-                          이메일
-                        </label>
-                      </div>
-                      <div className="radio">
-                        <label>
-                          <input
-                            type="radio"
-                            name="contactMethod"
-                            value="phone"
-                            checked={contactMethod === "phone"}
-                            onChange={handleChange}
-                          />
-                          전화
-                        </label>
-                      </div>
+                      <input
+                        type="text"
+                        id="tel"
+                        name="tel"
+                        className="form-control"
+                        placeholder="연락처"
+                        value={tel}
+                        required
+                        onChange={handleChange}
+                      />
+                      <p className="help-block text-danger"></p>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        className="form-control"
+                        placeholder="이메일"
+                        value={email}
+                        required
+                        onChange={handleChange}
+                      />
+                      <p className="help-block text-danger"></p>
                     </div>
                   </div>
                 </div>
@@ -137,6 +113,7 @@ export const Contact = (props) => {
                     className="form-control"
                     rows="4"
                     placeholder="내용"
+                    value={message}
                     required
                     onChange={handleChange}
                   ></textarea>
@@ -176,34 +153,14 @@ export const Contact = (props) => {
               </p>
             </div>
           </div>
-          {/*           <div className="col-md-12">
-            <div className="row">
-              <div className="social">
-                <ul>
-                  <li>
-                    <a href={props.data ? props.data.facebook : "/"}>
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.twitter : "/"}>
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.youtube : "/"}>
-                      <i className="fa fa-youtube"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
       <div id="footer">
         <div className="container text-center">
           <p>&copy; lighting solution Co. All rights reserved. </p>
+          <button class="text-button" onClick={handleAdmin}>
+            ?
+          </button>
         </div>
       </div>
     </div>
