@@ -1,0 +1,72 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.user-count {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.basic-service {
+  margin-bottom: 20px;
+}
+
+.plans-container {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.plan {
+  border: 1px solid #a0a0a05a;
+  padding: 20px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.plan.selected {
+  background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+  color: white;
+}
+
+.plan h3,
+.plan h2 {
+  margin: 10px 0;
+}
+
+.plan label {
+  display: block;
+  margin-top: 10px;
+}
+
+.summary {
+  display: flex;
+  border: 1px solid #a0a0a05a;
+  padding: 20px;
+  width: 950px;
+  text-align: center;
+  border-radius: 10px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summary button {
+  margin-top: 10px;
+  width: 500px;
+  padding: 10px 20px;
+  background-color: #00b4db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}

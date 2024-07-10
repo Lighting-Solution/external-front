@@ -11,7 +11,7 @@ export const About = (props) => {
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">
-              <h2>About Us</h2>
+              <h2>회사 소개</h2>
               <p>{props.data ? props.data.paragraph : "loading..."}</p>
               <h3>Lighting Solution을 선택해야 하는 이유</h3>
               <div className="list-style">
