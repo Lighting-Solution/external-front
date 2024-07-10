@@ -58,6 +58,12 @@ export const Services = (props) => {
                         case 1:
                           return (
                             <>
+                              <img
+                                src="img/service/digitalapproval.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "650px" }}
+                              />
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
                                 <p>{formattedText}</p>
@@ -90,6 +96,12 @@ export const Services = (props) => {
                         case 3:
                           return (
                             <>
+                              <img
+                                src="img/service/calendar.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "900px" }}
+                              />
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
                                 <p>{formattedText}</p>
@@ -111,6 +123,12 @@ export const Services = (props) => {
                                 <h3>{d.name}</h3>
                                 <p>{formattedText}</p>
                               </div>
+                              <img
+                                src="img/service/document.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "900px" }}
+                              />
                             </>
                           );
                         case 5:

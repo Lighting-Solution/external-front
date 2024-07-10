@@ -44,7 +44,7 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href="#portfolio" className="page-scroll">
+              <a href="#request" className="page-scroll">
                 신청
               </a>
             </li>

@@ -69,7 +69,7 @@
     {
       "icon": "fa fa-clipboard",
       "name": "전자결재",
-      "text": "메신 메신저asdadadsadassssssssssssssssssssssssssssssssssssssssssasadadsadadsadasdadsadsssssssssssssssssssssssssss"
+      "text": "편리하고 신속한 전자결재 서비스입니다. 모바일에서 간편하게 한 번 클릭하면 결재가 완료돼요. 언제 어디서나 빠르고 간편하게 결재할 수 있는 최적의 솔루션입니다."
     },
     {
       "icon": "fa fa-book",
@@ -79,12 +79,12 @@
     {
       "icon": "fa fa-calendar",
       "name": "캘린더",
-      "text": "캘린 캘린더"
+      "text": "캘린더에서 원하는 날짜를 클릭하면 간편하게 일정을 추가할 수 있어요. 동료들을 참석자로 설정하고 함께 일정을 관리하세요. 쉽고 편리한 일정 관리 기능을 제공합니다."
     },
     {
       "icon": "fa fa-folder-open",
       "name": "문서함",
-      "text": "문서 문서함"
+      "text": "부서 단위로 문서를 쉽고 간편하게 등록하세요. 사내 규정이나 매뉴얼을 공유하고 관리할 수 있어 문서 보존이 용이합니다. 부서 단위로 통제하여 보안도 강화됩니다."
     },
     {
       "icon": "fa fa-bullhorn",
