@@ -25,6 +25,14 @@ export const Services = (props) => {
                     }}
                   >
                     {(() => {
+                      const formattedText = d.text
+                        .split("\n")
+                        .map((line, index) => (
+                          <span key={index}>
+                            {line}
+                            <br />
+                          </span>
+                        ));
                       switch (i) {
                         case 0:
                           return (
@@ -37,13 +45,13 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <img
                                 src="img/service/chat01.png"
                                 className="img-responsive"
                                 alt=""
-                                style={{ width: "900px" }}
+                                style={{ width: "650px" }}
                               />
                             </>
                           );
@@ -52,7 +60,7 @@ export const Services = (props) => {
                             <>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <i
                                 className={d.icon}
@@ -69,8 +77,14 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
+                              <img
+                                src="img/service/contact01.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "900px" }}
+                              />
                             </>
                           );
                         case 3:
@@ -78,7 +92,7 @@ export const Services = (props) => {
                             <>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <i
                                 className={d.icon}
@@ -95,16 +109,22 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                             </>
                           );
                         case 5:
                           return (
                             <>
+                              <img
+                                src="img/service/board01.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "650px" }}
+                              />
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <i
                                 className={d.icon}
@@ -121,7 +141,7 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                             </>
                           );
