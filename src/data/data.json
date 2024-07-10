@@ -64,7 +64,7 @@
     {
       "icon": "fa fa-comments",
       "name": "메신저",
-      "text": "메신 메신저asdadadsadassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssasadadsadadsadasdadsadsssssssssssssssssssssssssss"
+      "text": "편리하고 직관적인 사내 메신저 서비스입니다.\n모바일 및 데스크탑에서 언제든지 사내 동료와 1:1 또는 그룹 채팅을 시작할 수 있어요.파일 공유 기능을 통해 중요한 문서나 자료를 쉽게 업로드하고 다운로드할 수 있습니다. 언제 어디서나 원활한 소통과 협업을 가능하게 하는 최적의 솔루션입니다."
     },
     {
       "icon": "fa fa-clipboard",
@@ -74,7 +74,7 @@
     {
       "icon": "fa fa-book",
       "name": "주소록",
-      "text": "주소 주소록"
+      "text": "사내 연락처와 개인 연락처를 활용한 주소록입니다.\n편리한 사내 공용 주소록을 통해 부서별 사원을 조회하고, 개인 주소록을 추가하여 중요한 연락처를 관리할 수 있습니다. 이름, 회사, 휴대폰 번호별 검색 기능을 제공하며, 개인 연락처의 추가, 삭제, 수정이 가능합니다."
     },
     {
       "icon": "fa fa-calendar",
@@ -89,7 +89,7 @@
     {
       "icon": "fa fa-bullhorn",
       "name": "게시판",
-      "text": "게시 게시판"
+      "text": "사내 공지사항과 자유롭게 소통할 수 있는 주소록입니다.\n자유게시판에서 동료들과 자유롭게 의견을 나누고, 댓글 기능을 통해 활발한 소통을 할 수 있습니다. 관리자 전용 공지사항 기능으로 중요한 정보를 효율적으로 전달할 수 있습니다."
     }
   ],
 
