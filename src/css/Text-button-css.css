@@ -1,0 +1,19 @@
+.text-button {
+  background: none;
+  border: none;
+  color: #888;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  cursor: text;
+}
+
+.text-button:hover,
+.text-button:focus,
+.text-button:active {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
