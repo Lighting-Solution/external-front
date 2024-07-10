@@ -26,7 +26,9 @@ export const Contact = (props) => {
     setState({ ...initialState });
   };
 
-  const handleAdmin = () => {};
+  const handleAdmin = () => {
+    alert("로그인 Modal 이 딱 나옵니다.");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
