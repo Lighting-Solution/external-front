@@ -25,6 +25,14 @@ export const Services = (props) => {
                     }}
                   >
                     {(() => {
+                      const formattedText = d.text
+                        .split("\n")
+                        .map((line, index) => (
+                          <span key={index}>
+                            {line}
+                            <br />
+                          </span>
+                        ));
                       switch (i) {
                         case 0:
                           return (
@@ -37,22 +45,28 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <img
                                 src="img/service/chat01.png"
                                 className="img-responsive"
                                 alt=""
-                                style={{ width: "900px" }}
+                                style={{ width: "700px" }}
                               />
                             </>
                           );
                         case 1:
                           return (
                             <>
+                              <img
+                                src="img/service/digitalapproval.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "900px" }}
+                              />
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <i
                                 className={d.icon}
@@ -69,16 +83,22 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                             </>
                           );
                         case 3:
                           return (
                             <>
+                              <img
+                                src="img/service/calendar.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "900px" }}
+                              />
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <i
                                 className={d.icon}
@@ -95,8 +115,14 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
+                              <img
+                                src="img/service/document.png"
+                                className="img-responsive"
+                                alt=""
+                                style={{ width: "900px" }}
+                              />
                             </>
                           );
                         case 5:
@@ -104,7 +130,7 @@ export const Services = (props) => {
                             <>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                               <i
                                 className={d.icon}
@@ -121,7 +147,7 @@ export const Services = (props) => {
                               ></i>
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
-                                <p>{d.text}</p>
+                                <p>{formattedText}</p>
                               </div>
                             </>
                           );
