@@ -62,7 +62,7 @@ export const Services = (props) => {
                                 src="img/service/digitalapproval.png"
                                 className="img-responsive"
                                 alt=""
-                                style={{ width: "900px" }}
+                                style={{ width: "650px" }}
                               />
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
