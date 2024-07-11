@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/Text-button-css.css";
+import "../css/Text-button.css";
 import AdminLoginModal from "./AdminLoginModal";
 import axios from "axios";
 const initialState = {
@@ -53,7 +53,7 @@ export const Contact = (props) => {
     };
     axios
       .post(
-        "http://localhost:9001/api/v1/lighting_solutions/inquiry/inquiry",
+        "http://localhost:9001/api/v1/lighting_solutions/inquiry/create",
         inquiryDTO,
         { headers: { "Content-Type": "application/json" } }
       )

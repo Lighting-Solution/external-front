@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useState } from "react";
-import "../css/AdminLoginModal-css.css";
+import "../css/AdminLoginModal.css";
 import axios from "axios";
 
 const initialState = (requestData) => ({
