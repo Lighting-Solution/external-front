@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/Text-button-css.css";
 import AdminLoginModal from "./AdminLoginModal";
-
+import axios from "axios";
 const initialState = {
   companyName: "",
   name: "",
@@ -38,8 +38,33 @@ export const Contact = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    clearState();
+    const inquiryDTO = {
+      companyName,
+      name,
+      tel,
+      email,
+      message,
+      manager: "",
+      inquiryState: 0,
+    };
+    axios
+      .post(
+        "http://localhost:9001/api/v1/lighting_solutions/inquiry/inquiry",
+        inquiryDTO,
+        { headers: { "Content-Type": "application/json" } }
+      )
+      .then((response) => {
+        if (response.data) {
+          clearState();
+          alert("문의가 등록되었습니다! 일주일 이내로 연락드리겠습니다.");
+        } else {
+          alert("Failed to create inquiry.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred while creating inquiry.");
+      });
   };
 
   return (
