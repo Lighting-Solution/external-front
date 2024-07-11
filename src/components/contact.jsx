@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/Text-button-css.css";
+import AdminLoginModal from "./AdminLoginModal";
 
 const initialState = {
   companyName: "",
@@ -12,6 +13,7 @@ const initialState = {
 export const Contact = (props) => {
   const [{ companyName, name, email, tel, message }, setState] =
     useState(initialState);
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -26,13 +28,20 @@ export const Contact = (props) => {
     setState({ ...initialState });
   };
 
-  const handleAdmin = () => {};
+  const handleAdmin = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     clearState();
   };
+
   return (
     <div>
       <div id="contact">
@@ -158,11 +167,12 @@ export const Contact = (props) => {
       <div id="footer">
         <div className="container text-center">
           <p>&copy; lighting solution Co. All rights reserved. </p>
-          <button class="text-button" onClick={handleAdmin}>
+          <button className="text-button" onClick={handleAdmin}>
             ?
           </button>
         </div>
       </div>
+      <AdminLoginModal show={showModal} handleClose={handleCloseModal} />
     </div>
   );
 };
