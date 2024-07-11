@@ -48,9 +48,9 @@ const InquiryDetail = ({ open, handleClose, inquiryId }) => {
       })
       .then((response) => {
         if (response.data) {
-          alert("Login successful!");
+          alert("Successful!");
         } else {
-          alert("Login failed. Please check your credentials.");
+          alert("Failed.");
         }
       })
       .catch((error) => {
