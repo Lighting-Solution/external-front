@@ -1,5 +1,6 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import "../css/AdminLoginModal-css.css";
+import axios from "axios";
 
 const initialState = (requestData) => ({
   priceState: requestData.priceInt,
@@ -39,10 +40,18 @@ const reducer = (state, action) => {
 
 const RequestModal = ({ show, handleClose, requestData }) => {
   const [state, dispatch] = useReducer(reducer, requestData, initialState);
+  const [companyName, setCompanyName] = useState("");
+  const [name, setName] = useState("");
+  const [tel, setTel] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (show) {
       dispatch({ type: "SET_INITIAL", payload: requestData });
+      setCompanyName("");
+      setName("");
+      setTel("");
+      setEmail("");
     }
   }, [show, requestData]);
 
@@ -56,10 +65,40 @@ const RequestModal = ({ show, handleClose, requestData }) => {
 
   const onSave = (e) => {
     e.preventDefault();
-    // 여기에 저장 로직 추가
+    const inquiryDTO = {
+      companyName,
+      name,
+      tel,
+      email,
+      message: state.content,
+      manager: "",
+      inquiryState: 0,
+    };
+    axios
+      .post(
+        "http://localhost:9001/api/v1/lighting_solutions/inquiry/inquiry",
+        inquiryDTO,
+        { headers: { "Content-Type": "application/json" } }
+      )
+      .then((response) => {
+        if (response.data) {
+          alert("문의가 등록되었습니다! 일주일 이내로 연락드리겠습니다.");
+        } else {
+          alert("Failed to create inquiry.");
+        }
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred while creating inquiry.");
+      });
   };
 
   const onClose = () => {
+    setCompanyName("");
+    setName("");
+    setTel("");
+    setEmail("");
     handleClose();
   };
 
@@ -75,7 +114,7 @@ const RequestModal = ({ show, handleClose, requestData }) => {
     const value = e.target.value;
     // 숫자가 아닌 문자, 한글, 특수문자 등을 필터링
     const filteredValue = value.replace(/[^0-9]/g, "");
-    e.target.value = filteredValue;
+    setTel(filteredValue);
   };
 
   return (
@@ -93,6 +132,8 @@ const RequestModal = ({ show, handleClose, requestData }) => {
               id="companyName"
               name="companyName"
               className="form-control"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
               required
             />
           </div>
@@ -103,6 +144,8 @@ const RequestModal = ({ show, handleClose, requestData }) => {
               id="name"
               name="name"
               className="form-control"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -113,9 +156,10 @@ const RequestModal = ({ show, handleClose, requestData }) => {
               id="tel"
               name="tel"
               className="form-control"
-              required
+              value={tel}
               onKeyPress={handleTelKeyPress}
               onChange={handleTelChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -125,6 +169,8 @@ const RequestModal = ({ show, handleClose, requestData }) => {
               id="email"
               name="email"
               className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -160,6 +206,7 @@ const RequestModal = ({ show, handleClose, requestData }) => {
             <input
               type="text"
               value={state.count}
+              className="form-control"
               readOnly
               style={{ textAlign: "center", width: "50px" }}
             />
