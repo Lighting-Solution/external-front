@@ -32,6 +32,10 @@ export const Contact = (props) => {
     setShowModal(true);
   };
 
+  const checkAdmin = (check) => {
+    props.checkAdmin(check);
+  };
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -197,7 +201,11 @@ export const Contact = (props) => {
           </button>
         </div>
       </div>
-      <AdminLoginModal show={showModal} handleClose={handleCloseModal} />
+      <AdminLoginModal
+        show={showModal}
+        handleClose={handleCloseModal}
+        checkAdmin={checkAdmin}
+      />
     </div>
   );
 };
