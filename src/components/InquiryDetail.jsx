@@ -82,12 +82,13 @@ const InquiryDetail = ({ open, handleClose, inquiryId }) => {
   const handleSubmit = () => {
     const send = {
       title: `[신청/상담] 문의 요청 ( 회사명 : ${inquiryData.companyName} )`,
-      content: `문의자 : ${inquiryData.name}\n연락처 : ${inquiryData.tel}\n이메일 : ${inquiryData.email}\n문의 내용 : ${inquiryData.message}\n카테고리 : ${inquiryData.category}`,
+      content: `문의자 : ${inquiryData.name}\n연락처 : ${inquiryData.tel}\n이메일 : ${inquiryData.email}\n문의 내용 : ${inquiryData.message}`,
+      category: inquiryData.category,
     };
 
     axios
-      .put(
-        `http://localhost:9001/api/v1/lighting_solutions/inquiry/send/${inquiryId}`,
+      .post(
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/send`,
         send,
         {
           headers: { "Content-Type": "application/json" },
