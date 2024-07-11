@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../css/AdminLoginModal-css.css";
 import axios from "axios";
 
-const AdminLoginModal = ({ show, handleClose }) => {
+const AdminLoginModal = ({ show, handleClose, checkAdmin }) => {
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");
 
@@ -31,7 +31,7 @@ const AdminLoginModal = ({ show, handleClose }) => {
       .then((response) => {
         if (response.data) {
           alert("Login successful!");
-          // Handle successful login here (e.g., redirect, save token, etc.)
+          checkAdmin(response.data);
         } else {
           alert("Login failed. Please check your credentials.");
         }

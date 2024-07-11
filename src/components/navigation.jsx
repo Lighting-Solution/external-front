@@ -1,8 +1,16 @@
 import React from "react";
 
 export const Navigation = (props) => {
+  const logout = () => {
+    props.logout(false);
+  };
+
   return (
-    <nav id="menu" className="navbar navbar-default navbar-fixed-top">
+    <nav
+      id="menu"
+      className="navbar navbar-default navbar-fixed-top"
+      onClick={logout}
+    >
       <div className="container">
         <div className="navbar-header">
           <button
