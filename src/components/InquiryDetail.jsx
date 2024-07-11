@@ -59,8 +59,25 @@ const InquiryDetail = ({ open, handleClose, inquiryId }) => {
       });
   };
   const handleSubmit = () => {
-    // 전송 로직 추가
-    alert("전송 버튼 클릭");
+    const send = {
+      title: `[신청/상담] 문의 요청 ( 회사명 : ${inquiryData.companyName} )`,
+      content: `문의자 : ${inquiryData.name}\n연락처 : ${inquiryData.tel}\n이메일 : ${inquiryData.email}\n문의 내용 : ${inquiryData.message}`,
+    };
+    axios
+      .put("http://localhost:9001/api/v1/lighting_solutions/inquiry/update", {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        if (response.data) {
+          alert("Login successful!");
+        } else {
+          alert("Login failed. Please check your credentials.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred during login.");
+      });
   };
 
   const handleList = () => {
