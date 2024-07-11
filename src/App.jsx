@@ -9,7 +9,7 @@ import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import { Info } from "./components/Info";
 import Request from "./components/Request";
-
+import { Admin } from "./components/Admin";
 import RequestModal from "./components/RequestModal";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 
