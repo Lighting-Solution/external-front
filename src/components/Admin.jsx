@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import InquiryDetail from "./InquiryDetail";
 
 import {
   Table,
@@ -13,8 +14,10 @@ import {
   Container,
 } from "@mui/material";
 
-const Admin = (props) => {
+const Admin = () => {
   const [inquiries, setInquiries] = useState([]);
+  const [selectedInquiryId, setSelectedInquiryId] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     fetchInquiries();
   }, []);
@@ -33,8 +36,14 @@ const Admin = (props) => {
   };
 
   const handleRowClick = (id) => {
-    console.log(`Clicked row with ID: ${id}`);
+    setSelectedInquiryId(id);
+    setIsModalOpen(true);
   };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Container sx={{ mt: 4 }}>
       <Typography
@@ -92,6 +101,11 @@ const Admin = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
+      <InquiryDetail
+        open={isModalOpen}
+        handleClose={handleCloseModal}
+        inquiryId={selectedInquiryId}
+      />
     </Container>
   );
 };
