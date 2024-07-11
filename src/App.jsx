@@ -23,15 +23,6 @@ const App = () => {
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
-  const [requestModal, setOpenRequestModal] = useState(false);
-
-  const closeRequestModal = () => {
-    setOpenRequestModal(false);
-  };
-
-  const openRequestModal = () => {
-    setOpenRequestModal(true);
-  };
 
   return (
     <div>
@@ -48,13 +39,6 @@ const App = () => {
       <Request data={landingPageData.Request} />
       {/* 문의 */}
       <Contact data={landingPageData.Contact} />
-
-      <Dialog open={requestModal} onClose={closeRequestModal}>
-        <DialogTitle>신청 문의</DialogTitle>
-        <DialogContent>
-          <RequestModal />
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };
