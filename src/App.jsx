@@ -10,6 +10,8 @@ import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import { Info } from "./components/Info";
 import Request from "./components/Request";
+import RequestModal from "./components/RequestModal";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -21,6 +23,15 @@ const App = () => {
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
+  const [requestModal, setOpenRequestModal] = useState(false);
+
+  const closeRequestModal = () => {
+    setOpenRequestModal(false);
+  };
+
+  const openRequestModal = () => {
+    setOpenRequestModal(true);
+  };
 
   return (
     <div>
@@ -37,6 +48,13 @@ const App = () => {
       <Request data={landingPageData.Request} />
       {/* 문의 */}
       <Contact data={landingPageData.Contact} />
+
+      <Dialog open={requestModal} onClose={closeRequestModal}>
+        <DialogTitle>신청 문의</DialogTitle>
+        <DialogContent>
+          <RequestModal />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
