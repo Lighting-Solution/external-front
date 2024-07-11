@@ -24,7 +24,7 @@ const Admin = () => {
   const fetchInquiries = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:9001/api/v1/lighting_solutions/inquiry/list-inquiry"
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/list-inquiry`
       );
       setInquiries(response.data);
     } catch (error) {
@@ -32,7 +32,7 @@ const Admin = () => {
     }
   };
   const getStatusText = (inquiryState) => {
-    return inquiryState === 0 ? "대기" : inquiryState === 1 ? "완료" : "";
+    return inquiryState ? "완료" : "대기";
   };
 
   const handleRowClick = (id) => {

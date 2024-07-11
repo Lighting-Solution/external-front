@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "../css/Text-button-css.css";
+import "../css/Text-button.css";
 import AdminLoginModal from "./AdminLoginModal";
 import axios from "axios";
+
 const initialState = {
   companyName: "",
   name: "",
@@ -11,21 +12,16 @@ const initialState = {
 };
 
 export const Contact = (props) => {
-  const [{ companyName, name, email, tel, message }, setState] =
-    useState(initialState);
+  const [state, setState] = useState(initialState);
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
-    if (type === "radio") {
-      setState((prevState) => ({ ...prevState }));
-    } else {
-      setState((prevState) => ({ ...prevState, [name]: value }));
-    }
+    const { name, value } = e.target;
+    setState((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const clearState = () => {
-    setState({ ...initialState });
+    setState(initialState);
   };
 
   const handleAdmin = () => {
@@ -40,8 +36,17 @@ export const Contact = (props) => {
     setShowModal(false);
   };
 
+  const handleTelChange = (e) => {
+    const { value } = e.target;
+    // 숫자가 아닌 문자, 한글, 특수문자 등을 필터링
+    const filteredValue = value.replace(/[^0-9]/g, "");
+    setState((prevState) => ({ ...prevState, tel: filteredValue }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { companyName, name, email, tel, message } = state;
+
     const inquiryDTO = {
       companyName,
       name,
@@ -49,11 +54,13 @@ export const Contact = (props) => {
       email,
       message,
       manager: "",
-      inquiryState: 0,
+      inquiryState: false,
     };
+
+    console.log(inquiryDTO);
     axios
       .post(
-        "http://localhost:9001/api/v1/lighting_solutions/inquiry/inquiry",
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/create`,
         inquiryDTO,
         { headers: { "Content-Type": "application/json" } }
       )
@@ -81,7 +88,7 @@ export const Contact = (props) => {
                 <h2>Get In Touch</h2>
                 <p>상담을 통해 궁금한 점을 즉시 해결하세요.</p>
               </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
+              <form name="sentMessage" validate="true" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
@@ -91,7 +98,7 @@ export const Contact = (props) => {
                         name="companyName"
                         className="form-control"
                         placeholder="회사명"
-                        value={companyName}
+                        value={state.companyName}
                         required
                         onChange={handleChange}
                       />
@@ -106,7 +113,7 @@ export const Contact = (props) => {
                         name="name"
                         className="form-control"
                         placeholder="이름"
-                        value={name}
+                        value={state.name}
                         required
                         onChange={handleChange}
                       />
@@ -121,9 +128,9 @@ export const Contact = (props) => {
                         name="tel"
                         className="form-control"
                         placeholder="연락처"
-                        value={tel}
+                        value={state.tel}
                         required
-                        onChange={handleChange}
+                        onChange={handleTelChange}
                       />
                       <p className="help-block text-danger"></p>
                     </div>
@@ -136,7 +143,7 @@ export const Contact = (props) => {
                         name="email"
                         className="form-control"
                         placeholder="이메일"
-                        value={email}
+                        value={state.email}
                         required
                         onChange={handleChange}
                       />
@@ -151,7 +158,7 @@ export const Contact = (props) => {
                     className="form-control"
                     rows="4"
                     placeholder="내용"
-                    value={message}
+                    value={state.message}
                     required
                     onChange={handleChange}
                   ></textarea>

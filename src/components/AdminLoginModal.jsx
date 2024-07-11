@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/AdminLoginModal-css.css";
+import "../css/AdminLoginModal.css";
 import axios from "axios";
 
 const AdminLoginModal = ({ show, handleClose, checkAdmin }) => {
@@ -22,7 +22,7 @@ const AdminLoginModal = ({ show, handleClose, checkAdmin }) => {
 
     axios
       .post(
-        "http://localhost:9001/api/v1/lighting_solutions/inquiry/admin",
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/admin`,
         adminCredentials,
         {
           headers: { "Content-Type": "application/json" },
