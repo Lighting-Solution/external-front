@@ -10,7 +10,7 @@ export const Info = (props) => {
         <div className="row">
           <div className="col-xs-12 col-md-12">
             <img
-              src="img/info.jpg"
+              src="img/info.png"
               className="img-responsive"
               alt=""
               style={{ width: "1150px", paddingLeft: "70px" }}
