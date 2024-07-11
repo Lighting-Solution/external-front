@@ -1,10 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Navigation } from "./components/navigation";
-import { Header } from "./components/header";
-import { About } from "./components/about";
-import { Services } from "./components/services";
-import { Contact } from "./components/contact";
-import JsonData from "./data/data.json";
+import React, { useEffect, useState } from "react";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import { About } from "./components/about";
@@ -13,11 +7,9 @@ import { Header } from "./components/header";
 import { Info } from "./components/Info";
 import { Navigation } from "./components/navigation";
 import Request from "./components/Request";
-import { Admin } from "./components/Admin";
-import RequestModal from "./components/RequestModal";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import { Services } from "./components/services";
 import JsonData from "./data/data.json";
+import Admin from "./components/Admin";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
