@@ -22,7 +22,7 @@ const AdminLoginModal = ({ show, handleClose, checkAdmin }) => {
 
     axios
       .post(
-        "http://localhost:9001/api/v1/lighting_solutions/inquiry/admin",
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/admin`,
         adminCredentials,
         {
           headers: { "Content-Type": "application/json" },

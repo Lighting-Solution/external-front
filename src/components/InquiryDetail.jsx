@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../css/InquiryDetail.css";
 import axios from "axios";
 import { Modal, Box, Button, Typography } from "@mui/material";
+
 const InquiryDetail = ({ open, handleClose, inquiryId }) => {
   const [inquiryData, setInquiryData] = useState({
+    id: inquiryId,
     companyName: "",
     name: "",
     tel: "",
@@ -11,29 +13,41 @@ const InquiryDetail = ({ open, handleClose, inquiryId }) => {
     message: "",
     inquiryState: false,
     manager: "",
+    category: "",
   });
+
   useEffect(() => {
+    let isMounted = true;
+
     if (open) {
       fetchInquiryDetail(inquiryId);
     }
+
+    return () => {
+      isMounted = false;
+    };
+
+    async function fetchInquiryDetail(inquiryId) {
+      try {
+        const response = await axios.get(
+          `http://localhost:9001/api/v1/lighting_solutions/inquiry/detail-inquiry/${inquiryId}`
+        );
+        if (isMounted) {
+          setInquiryData(response.data); // 컴포넌트가 마운트된 상태일 때만 상태 업데이트
+        }
+      } catch (error) {
+        console.error("Error fetching inquiry detail:", error);
+      }
+    }
   }, [open, inquiryId]);
 
-  const fetchInquiryDetail = async (id) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:9001/api/v1/lighting_solutions/inquiry/detail-inquiry/${id}`
-      );
-      setInquiryData(response.data);
-    } catch (error) {
-      console.error("Error fetching inquiry detail:", error);
-    }
-  };
   const handleStateChange = (e) => {
     setInquiryData({
       ...inquiryData,
       inquiryState: e.target.checked,
     });
   };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setInquiryData({
@@ -41,42 +55,54 @@ const InquiryDetail = ({ open, handleClose, inquiryId }) => {
       [name]: value,
     });
   };
+
   const handleUpdate = () => {
     axios
-      .put("http://localhost:9001/api/v1/lighting_solutions/inquiry/update", {
-        headers: { "Content-Type": "application/json" },
-      })
+      .put(
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/update`,
+        inquiryData,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
       .then((response) => {
         if (response.data) {
-          alert("Login successful!");
+          alert("업데이트가 성공적으로 완료되었습니다!");
+          handleClose();
         } else {
-          alert("Login failed. Please check your credentials.");
+          alert("업데이트 실패. 다시 시도해주세요.");
         }
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("An error occurred during login.");
+        alert("업데이트 도중 오류가 발생했습니다.");
       });
   };
+
   const handleSubmit = () => {
     const send = {
       title: `[신청/상담] 문의 요청 ( 회사명 : ${inquiryData.companyName} )`,
-      content: `문의자 : ${inquiryData.name}\n연락처 : ${inquiryData.tel}\n이메일 : ${inquiryData.email}\n문의 내용 : ${inquiryData.message}`,
+      content: `문의자 : ${inquiryData.name}\n연락처 : ${inquiryData.tel}\n이메일 : ${inquiryData.email}\n문의 내용 : ${inquiryData.message}\n카테고리 : ${inquiryData.category}`,
     };
+
     axios
-      .put("http://localhost:9001/api/v1/lighting_solutions/inquiry/update", {
-        headers: { "Content-Type": "application/json" },
-      })
+      .put(
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/send/${inquiryId}`,
+        send,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
       .then((response) => {
         if (response.data) {
-          alert("Login successful!");
+          alert("전송에 성공하였습니다.");
         } else {
-          alert("Login failed. Please check your credentials.");
+          alert("전송에 실패하였습니다. 다시 시도해주세요.");
         }
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("An error occurred during login.");
+        alert("An error occurred during send.");
       });
   };
 
@@ -129,6 +155,19 @@ const InquiryDetail = ({ open, handleClose, inquiryId }) => {
               value={inquiryData.manager}
               onChange={handleInputChange}
             />
+          </div>
+          <div className="form-group">
+            <label>카테고리</label>
+            <select
+              name="category"
+              value={inquiryData.category}
+              onChange={handleInputChange}
+            >
+              <option value="public">공통</option>
+              <option value="service">서비스사업부</option>
+              <option value="solution">솔루션사업부</option>
+              <option value="manage">관리사업부</option>
+            </select>
           </div>
           <div className="form-group form-group-checkbox">
             <label className="checkbox-label">

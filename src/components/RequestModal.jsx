@@ -1,45 +1,13 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/AdminLoginModal.css";
 import axios from "axios";
 
-const initialState = (requestData) => ({
-  priceState: requestData.priceInt,
-  count: 1,
-  content: `신청 조건 : ${requestData.name} \n ₩ ${requestData.priceInt}`,
-});
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "SET_INITIAL":
-      return initialState(action.payload);
-    case "INCREMENT":
-      return {
-        ...state,
-        count: state.count + 1,
-        priceState: state.priceState + 1000,
-        content: `신청 조건 : ${action.payload.name} \n ₩ ${
-          state.priceState + 1000
-        }`,
-      };
-    case "DECREMENT":
-      if (state.count > 1) {
-        return {
-          ...state,
-          count: state.count - 1,
-          priceState: state.priceState - 1000,
-          content: `신청 조건 : ${action.payload.name} \n ₩ ${
-            state.priceState - 1000
-          }`,
-        };
-      }
-      return state;
-    default:
-      return state;
-  }
-};
-
 const RequestModal = ({ show, handleClose, requestData }) => {
-  const [state, dispatch] = useReducer(reducer, requestData, initialState);
+  const [priceState, setPriceState] = useState(requestData.priceInt);
+  const [count, setCount] = useState(1);
+  const [content, setContent] = useState(
+    `신청 조건 : ${requestData.name} \n ₩ ${requestData.priceInt}`
+  );
   const [companyName, setCompanyName] = useState("");
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
@@ -47,7 +15,11 @@ const RequestModal = ({ show, handleClose, requestData }) => {
 
   useEffect(() => {
     if (show) {
-      dispatch({ type: "SET_INITIAL", payload: requestData });
+      setPriceState(requestData.priceInt);
+      setCount(1);
+      setContent(
+        `신청 조건 : ${requestData.name} \n ₩ ${requestData.priceInt}`
+      );
       setCompanyName("");
       setName("");
       setTel("");
@@ -56,11 +28,17 @@ const RequestModal = ({ show, handleClose, requestData }) => {
   }, [show, requestData]);
 
   const increment = () => {
-    dispatch({ type: "INCREMENT", payload: requestData });
+    setCount(count + 1);
+    setPriceState(priceState + 1000);
+    setContent(`신청 조건 : ${requestData.name} \n ₩ ${priceState + 1000}`);
   };
 
   const decrement = () => {
-    dispatch({ type: "DECREMENT", payload: requestData });
+    if (count > 1) {
+      setCount(count - 1);
+      setPriceState(priceState - 1000);
+      setContent(`신청 조건 : ${requestData.name} \n ₩ ${priceState - 1000}`);
+    }
   };
 
   const onSave = (e) => {
@@ -70,13 +48,13 @@ const RequestModal = ({ show, handleClose, requestData }) => {
       name,
       tel,
       email,
-      message: state.content,
+      message: content,
       manager: "",
-      inquiryState: 0,
+      inquiryState: false,
     };
     axios
       .post(
-        "http://localhost:9001/api/v1/lighting_solutions/inquiry/inquiry",
+        `http://localhost:9001/api/v1/lighting_solutions/inquiry/create`,
         inquiryDTO,
         { headers: { "Content-Type": "application/json" } }
       )
@@ -90,7 +68,7 @@ const RequestModal = ({ show, handleClose, requestData }) => {
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("An error occurred while creating inquiry.");
+        alert("문의 생성 중 오류가 발생했습니다.");
       });
   };
 
@@ -104,7 +82,6 @@ const RequestModal = ({ show, handleClose, requestData }) => {
 
   const handleTelKeyPress = (e) => {
     const charCode = e.which ? e.which : e.keyCode;
-    // 48-57: 0-9 숫자키
     if (charCode < 48 || charCode > 57) {
       e.preventDefault();
     }
@@ -112,7 +89,6 @@ const RequestModal = ({ show, handleClose, requestData }) => {
 
   const handleTelChange = (e) => {
     const value = e.target.value;
-    // 숫자가 아닌 문자, 한글, 특수문자 등을 필터링
     const filteredValue = value.replace(/[^0-9]/g, "");
     setTel(filteredValue);
   };
@@ -180,7 +156,7 @@ const RequestModal = ({ show, handleClose, requestData }) => {
               id="message"
               name="message"
               className="form-control"
-              value={state.content}
+              value={content}
               style={{ resize: "none" }}
               disabled
               required
@@ -205,7 +181,7 @@ const RequestModal = ({ show, handleClose, requestData }) => {
             </button>
             <input
               type="text"
-              value={state.count}
+              value={count}
               className="form-control"
               readOnly
               style={{ textAlign: "center", width: "50px" }}
