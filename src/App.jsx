@@ -10,6 +10,8 @@ import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import { Info } from "./components/Info";
 import Request from "./components/Request";
+import RequestModal from "./components/RequestModal";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,

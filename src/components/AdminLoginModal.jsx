@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/AdminLoginModal-css.css";
+import axios from "axios";
+
 const AdminLoginModal = ({ show, handleClose }) => {
+  const [adminId, setAdminId] = useState("");
+  const [adminPw, setAdminPw] = useState("");
+
+  useEffect(() => {
+    if (!show) {
+      setAdminId("");
+      setAdminPw("");
+    }
+  }, [show]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    handleClose();
+    const adminCredentials = {
+      id: adminId,
+      pw: adminPw,
+    };
+
+    axios
+      .post(
+        "http://localhost:9001/api/v1/lighting_solutions/inquiry/admin",
+        adminCredentials,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((response) => {
+        if (response.data) {
+          alert("Login successful!");
+          // Handle successful login here (e.g., redirect, save token, etc.)
+        } else {
+          alert("Login failed. Please check your credentials.");
+        }
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred during login.");
+      });
   };
 
   return (
@@ -22,6 +58,8 @@ const AdminLoginModal = ({ show, handleClose }) => {
               id="adminId"
               name="adminId"
               className="form-control"
+              value={adminId}
+              onChange={(e) => setAdminId(e.target.value)}
               required
             />
           </div>
@@ -32,6 +70,8 @@ const AdminLoginModal = ({ show, handleClose }) => {
               id="adminPw"
               name="adminPw"
               className="form-control"
+              value={adminPw}
+              onChange={(e) => setAdminPw(e.target.value)}
               required
             />
           </div>
