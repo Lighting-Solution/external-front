@@ -89,7 +89,7 @@ export const Services = (props) => {
                                 src="img/service/contact01.png"
                                 className="img-responsive"
                                 alt=""
-                                style={{ width: "900px" }}
+                                style={{ width: "650px" }}
                               />
                             </>
                           );
@@ -100,7 +100,7 @@ export const Services = (props) => {
                                 src="img/service/calendar.png"
                                 className="img-responsive"
                                 alt=""
-                                style={{ width: "900px" }}
+                                style={{ width: "650px" }}
                               />
                               <div className="service-desc">
                                 <h3>{d.name}</h3>
@@ -127,7 +127,7 @@ export const Services = (props) => {
                                 src="img/service/document.png"
                                 className="img-responsive"
                                 alt=""
-                                style={{ width: "900px" }}
+                                style={{ width: "650px" }}
                               />
                             </>
                           );
