@@ -9,6 +9,7 @@ import { Navigation } from "./components/navigation";
 import Request from "./components/Request";
 import { Services } from "./components/services";
 import JsonData from "./data/data.json";
+import Admin from "./components/Admin";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -30,7 +31,9 @@ const App = () => {
     <>
       <Navigation logout={checkAdmin} />
       {admin ? (
-        <div>{/* <Admin data={landingPageData.Admin} /> */}</div>
+        <div style={{ paddingTop: "100px" }}>
+          {<Admin data={landingPageData.Admin} />}
+        </div>
       ) : (
         <div>
           {/* 메인 이미지 소개 */}
